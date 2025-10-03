@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات أبو أمير للأعمال المتكاملة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* التنسيقات الأساسية */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #2c3e50; /* لون نص داكن احترافي */
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* ظل أعمق */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* استخدام خط Tajawal */
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.7; /* تحسين تباعد الأسطر */
+            font-size: 16px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* الترويسة */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.2rem 0; /* زيادة ارتفاع الترويسة قليلاً */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem; /* تكبير الشعار */
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: max-height 0.3s ease-in-out;
+        }
+        
+        nav ul li {
+            margin-left: 1.8rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding-bottom: 5px;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        /* قسم البطل */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.95)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            border-bottom-left-radius: 50% 10%;
+            border-bottom-right-radius: 50% 10%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem; /* تكبير العنوان */
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px; /* شكل بيضاوي */
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        /* تنسيق الأزرار الصغيرة في قسم الخدمات */
+        .service-card .btn {
+            padding: 0.7rem 1.2rem;
+            font-size: 1rem;
+            margin-top: 1rem;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+        }
+        
+        /* قسم الخدمات */
+        .services {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 900;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; 
+            flex-direction: column;
+            border: 1px solid #ddd;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 2.8rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .service-content p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            margin: 1rem 0;
+            padding: 0.5rem 0;
+            border-top: 1px dashed #eee;
+        }
+        
+        /* قسم المميزات */
+        .features {
+            background-color: var(--light-color);
+            padding: 5rem 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: background 0.3s;
+        }
+        
+        .feature:hover {
+            background-color: #fff;
+        }
+
+        .feature i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .feature:hover i {
+            color: var(--secondary-color);
+        }
+        
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        /* قسم التسعير (الباقات) */
+        .pricing {
+            padding: 5rem 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+            border-color: var(--secondary-color);
+        }
+
+        /* تمييز الباقة المتوسطة (إذا كانت هي المفضلة) */
+        .pricing-card:nth-child(2) {
+            transform: scale(1.05);
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .pricing-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.8rem;
+        }
+
+        .pricing-card:nth-child(2) .pricing-header {
+            background-color: var(--secondary-color);
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+        }
+
+        .pricing-header p {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            color: #eee;
+        }
+        
+        .pricing-body {
+            padding: 2rem;
+        }
+        
+        .pricing-body ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-body ul li {
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #eee;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .pricing-body ul li:last-child {
+            border-bottom: none;
+        }
+        
+        /* قسم الاتصال */
+        .contact {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 5rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info i {
+            margin-left: 0.8rem;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #128C7E;
+        }
+
+        .whatsapp-link i {
+            font-size: 1.3rem;
+            margin-left: 0.8rem;
+            color: white; 
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder,
+        .contact-form select {
+            color: #ccc;
+        }
+
+        /* ايقونة الواتساب العائمة */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
+            animation: pulse 1.5s infinite; /* إضافة حركة نبض */
+        }
+
+        .floating-whatsapp:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* التذييل */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+        }
+        
+        /* التجاوب مع الأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row; 
+                justify-content: space-between;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            nav {
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                max-height: 0; 
+                overflow: hidden;
+            }
+
+            nav.show {
+                max-height: 400px; 
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .floating-whatsapp {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cube"></i>
+                    <span>أبو</span> أمير
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#pricing">الباقات</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>رفع مستوى أعمالك مع خدمات **أبو أمير** المتكاملة</h1>
+            <p>نقدم مجموعة متكاملة من الخدمات المهنية لدعم نمو وتطوير أعمالك، من تصميم الهوية البصرية إلى قواعد البيانات العالمية.</p>
+            <a href="#services" class="btn">اكتشف خدماتنا</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدماتنا المتكاملة</h2>
+                <p>نقدم حلولاً احترافية في التصميم والبرمجة والتسويق الرقمي لتلبية احتياجات أعمالك</p>
+            </div>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="service-content">
+                        <div>
+                            <h3>إنشاء موقع تعريفي (جديد)</h3>
+                            <p>تصميم وتطوير موقع ويب احترافي ومتجاوب، يعكس هوية علامتك التجارية بأفضل شكل.</p>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-price">1500 ر.س</div>
+                            <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A5%D9%86%D8%B4%D8%A7%D8%A1%20%D9%85%D9%88%D9%82%D8%B9%20%D8%AA%D8%B9%D8%B1%D9%8A%D9%81%D9%8A%20%D8%A8%D8%B3%D8%B9%D8%B1%201500%20%D8%B1.%D8%B3" class="btn" target="_blank">شراء الآن</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="service-content">
+                        <div>
+                            <h3>قاعدة بيانات من جميع الدول</h3>
+                            <p>أكثر من 100 ألف سجل لشركات وأفراد، لمساعدتك في حملات التسويق واستهداف العملاء.</p>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-price">70$</div>
+                            <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AE%D8%AF%D9%85%D8%A9%20%D9%82%D8%A7%D8%B9%D8%AF%D8%A9%20%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20(100%20%D8%A3%D9%84%D9%81)%20%D8%A8%D8%B3%D8%B9%D8%B1%2070%24" class="btn" target="_blank">شراء الآن</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <div>
+                            <h3>إضافة نشاطك التجاري إلى الخريطة</h3>
+                            <p>زيادة ظهورك المحلي وتحسين وصول العملاء إليك عبر تسجيل نشاطك في خرائط جوجل.</p>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-price">30$</div>
+                            <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D8%A7%D9%84%D9%86%D8%B4%D8%A7%D8%B7%20%D8%A5%D9%84%D9%89%20%D8%A7%D9%84%D8%AE%D8%B1%D9%8A%D8%B7%D8%A9%20%D8%A8%D8%B3%D8%B9%D8%B1%2030%24" class="btn" target="_blank">شراء الآن</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="service-content">
+                        <div>
+                            <h3>تصميم الشعارات</h3>
+                            <p>تصميم شعار فريد واحترافي يمثل هويتك التجارية بوضوح وجاذبية عالية.</p>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-price">50$</div>
+                            <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%A7%D9%84%D8%B4%D8%B9%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%A8%D8%B3%D8%B9%D8%B1%2050%24" class="btn" target="_blank">شراء الآن</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="service-content">
+                        <div>
+                            <h3>تصميم بطاقات العمل</h3>
+                            <p>تصميم بطاقات عمل احترافية وأنيقة لترك انطباع دائم ومميز لدى عملائك.</p>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-price">20$</div>
+                            <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%A8%D8%B7%D8%A7%D9%82%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%20%D8%A8%D8%B3%D8%B9%D8%B1%2020%24" class="btn" target="_blank">شراء الآن</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <div class="service-content">
+                        <div>
+                            <h3>تصميم محتوى وسائل التواصل الاجتماعي</h3>
+                            <p>تصاميم جذابة ومهنية لمنصاتك الاجتماعية لزيادة التفاعل وبناء الوعي بعلامتك التجارية.</p>
+                        </div>
+                        <div class="service-footer">
+                            <div class="service-price">100$</div>
+                            <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%85%D8%AD%D8%AA%D9%88%D9%89%20%D9%84%D9%88%D8%B3%D8%A7%D8%A6%D9%84%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%B3%D8%B9%D8%B1%20100%24" class="btn" target="_blank">شراء الآن</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا تختارنا؟</h2>
+                <p>نحن نقدم حلولاً مبتكرة وخدمات عالية الجودة لمساعدة أعمالك على النمو والازدهار</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <h3>تسليم سريع</h3>
+                    <p>نضمن تسليم مشاريعك في الوقت المتفق عليه مع الحفاظ على أعلى معايير الجودة.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>دعم فني متواصل</h3>
+                    <p>فريق دعم فني متاح على مدار الساعة لمساعدتك في أي استفسار أو مشكلة تواجهك.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-edit"></i>
+                    <h3>تعديلات غير محدودة</h3>
+                    <p>نوفر لك عدد غير محدود من التعديلات حتى تحصل على النتيجة التي ترضيك تمامًا.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>تصميم متجاوب</h3>
+                    <p>جميع تصاميمنا متجاوبة مع جميع أحجام الشاشات والأجهزة المختلفة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>باقات الأسعار</h2>
+                <p>اختر الباقة المناسبة لاحتياجاتك وميزانيتك لتحقيق أقصى استفادة</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>الباقة الأساسية</h3>
+                        <div class="price">$99</div>
+                        <p>شهريًا</p>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li>تصميم شعار احترافي</li>
+                            <li>تصميم بطاقة عمل</li>
+                            <li>5 تصميمات لوسائل التواصل</li>
+                            <li>دعم فني عبر البريد الإلكتروني</li>
+                        </ul>
+                        <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%D8%A8%D8%B3%D8%B9%D8%B1%2099%24%20%D8%B4%D9%87%D8%B1%D9%8A%D8%A7%D9%8B" class="btn" target="_blank">اختر الباقة</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>الباقة المتوسطة</h3>
+                        <div class="price">$199</div>
+                        <p>شهريًا</p>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li>كل ما في الباقة الأساسية</li>
+                            <li>**إنشاء موقع تعريفي (صفحة واحدة)**</li>
+                            <li>إضافة النشاط التجاري إلى الخرائط</li>
+                            <li>15 تصميم لوسائل التواصل</li>
+                            <li>دعم فني هاتفي</li>
+                            <li>3 تعديلات مجانية</li>
+                        </ul>
+                        <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D8%AA%D9%88%D8%B3%D8%B7%D8%A9%20%D8%A8%D8%B3%D8%B9%D8%B1%20199%24%20%D8%B4%D9%87%D8%B1%D9%8A%D8%A7%D9%8B" class="btn" target="_blank">اختر الباقة</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>الباقة المتقدمة</h3>
+                        <div class="price">$299</div>
+                        <p>شهريًا</p>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li>كل ما في الباقة المتوسطة</li>
+                            <li>**إنشاء موقع تعريفي (متعدد الصفحات)**</li>
+                            <li>وصول إلى قاعدة بيانات الشركات</li>
+                            <li>تصميمات غير محدودة لوسائل التواصل</li>
+                            <li>دعم فني على مدار الساعة</li>
+                            <li>تعديلات غير محدودة</li>
+                        </ul>
+                        <a href="https://wa.me/967778895424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D6%8B%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D8%AA%D9%82%D8%AF%D9%85%D8%A9%20%D8%A8%D8%B3%D8%B9%D8%B1%20299%24%20%D8%B4%D9%87%D8%B1%D9%8A%D8%A7%D9%8B" class="btn" target="_blank">اختر الباقة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title" style="color: white;">
+                <h2 style="color: white;">اتصل بنا</h2>
+                <p style="color: #ccc;">نحن هنا للإجابة على جميع استفساراتك ومساعدتك في اختيار الخدمة المناسبة. لا تتردد في التواصل.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>معلومات الاتصال</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> العنوان: **اليمن، صنعاء**</p>
+                    <p><i class="fas fa-phone"></i> الهاتف: +967 778 895 424</p>
+                    <p><i class="fas fa-envelope"></i> البريد الإلكتروني: info@abuamir.com</p>
+                    <p><i class="fas fa-clock"></i> أوقات العمل: من الأحد إلى الخميس، 9 صباحًا - 5 مساءً</p>
+                    
+                    <a href="https://wa.me/967778895424" class="whatsapp-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i> تواصل عبر الواتساب
+                    </a>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="الاسم الكامل" required>
+                        <input type="email" placeholder="البريد الإلكتروني" required>
+                        <input type="tel" placeholder="رقم الهاتف">
+                        <select>
+                            <option value="" disabled selected>اختر الخدمة المطلوبة</option>
+                            <option value="website-creation">إنشاء مواقع تعريفية</option>
+                            <option value="database">قاعدة بيانات الشركات</option>
+                            <option value="map">إضافة النشاط التجاري إلى الخريطة</option>
+                            <option value="logo">تصميم الشعارات</option>
+                            <option value="business-card">تصميم بطاقات العمل</option>
+                            <option value="social-media">تصميم محتوى وسائل التواصل</option>
+                        </select>
+                        <textarea rows="5" placeholder="رسالتك"></textarea>
+                        <button type="submit" class="btn">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>أبو أمير</h4>
+                    <p>نقدم حلولاً متكاملة لتعزيز وجودك الرقمي وتطوير أعمالك من خلال خدمات احترافية ومبتكرة.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#pricing">الباقات</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="#">إنشاء مواقع تعريفية</a></li>
+                        <li><a href="#">قاعدة بيانات الشركات</a></li>
+                        <li><a href="#">إضافة النشاط التجاري إلى الخريطة</a></li>
+                        <li><a href="#">تصميم الشعارات</a></li>
+                        <li><a href="#">تصميم بطاقات العمل</a></li>
+                        <li><a href="#">تصميم محتوى وسائل التواصل</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>تابعنا</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 **أبو أمير**</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/967778895424" class="floating-whatsapp" target="_blank" title="تواصل عبر الواتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // تفعيل القائمة المتنقلة
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('#main-nav').classList.toggle('show');
+        });
+        
+        // إضافة تأثير التمرير السلس للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // إغلاق القائمة بعد النقر على الرابط في وضع الجوال
+                const nav = document.getElementById('main-nav');
+                if (nav.classList.contains('show')) {
+                    nav.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
